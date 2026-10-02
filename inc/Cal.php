@@ -4,6 +4,8 @@ namespace CalCom;
 
 use CalCom\Admin\Customizer;
 use CalCom\Admin\ApiSettings;
+use CalCom\Integrations\Integrations;
+use CalCom\Integrations\Admin\IntegrationsPage;
 
 defined('ABSPATH') || exit;
 
@@ -20,6 +22,12 @@ class Cal
         (new ApiSettings())->hooks();
         (new CustomEmbed())->hooks();
 
+        $integrations = new Integrations();
+
+        $integration_instances = [
+        ];
+
+        (new IntegrationsPage($integrations, $integration_instances))->hooks();
     }
 
     private function hooks()
@@ -86,6 +94,15 @@ class Cal
             CALCOM_ASSETS_URL . 'css/style.min.css',
             [],
             $ver
+        );
+
+        wp_register_style(
+            'calcom-admin-integrations-css',
+            CALCOM_ASSETS_URL . 'css/admin-integrations.min.css',
+            ['calcom-embed-css'],
+            file_exists(CALCOM_ASSETS_PATH . 'css/admin-integrations.min.css')
+                ? filemtime(CALCOM_ASSETS_PATH . 'css/admin-integrations.min.css')
+                : false
         );
     }
 

@@ -47,6 +47,26 @@ class Customizer
         );
     }
 
+    private function has_api_config()
+    {
+        $credentials = new \CalCom\Credentials();
+        return $credentials->exists();
+    }
+
+    private function has_cached_event_types()
+    {
+        $cached = get_transient(\CalCom\EventTypes\EventTypes::CACHE_KEY);
+        if ($cached === false || !is_array($cached) || empty($cached)) {
+            return false;
+        }
+
+        $visible = array_filter($cached, function ($et) {
+            return isset($et['hidden']) ? !$et['hidden'] : true;
+        });
+
+        return count($visible) > 0;
+    }
+
     public function render()
     {
         wp_enqueue_script('calcom-customizer-js');
@@ -58,11 +78,21 @@ class Customizer
             <div id="calcom-customizer">
                 <div id="cal-customizer">
                     <div class="customizer-controls">
+                        <?php if ($this->has_api_config() && $this->has_cached_event_types()): ?>
+                            <div class="group">
+                                <div class="section-title"><?php esc_html_e('Default Event Type', 'cal-com'); ?></div>
+                                <?php \CalCom\EventTypes\Admin\EventTypeSelector::render([
+                                    'label' => esc_html__('Cal.com Event Type', 'cal-com'),
+                                    'name' => 'calcom_event_type',
+                                ]); ?>
+                            </div>
+                        <?php else: ?>
                             <div class="group">
                                 <div class="section-title"><?php esc_html_e('Cal Link', 'cal-com'); ?></div>
                                 <label><?php esc_html_e('Cal Link', 'cal-com'); ?></label>
                                 <input type="text" id="calLink" placeholder="/demo/30min" value="">
                             </div>
+                        <?php endif; ?>
 
                         <div class="shortcode-box">
                             <span class="shortcode-label"><?php esc_html_e('Generated Shortcode', 'cal-com'); ?></span>
