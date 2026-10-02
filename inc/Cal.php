@@ -5,6 +5,11 @@ namespace CalCom;
 use CalCom\Admin\Customizer;
 use CalCom\Admin\ApiSettings;
 use CalCom\Integrations\Integrations;
+use CalCom\Integrations\LearnPress;
+use CalCom\Integrations\TutorLMS;
+use CalCom\Integrations\UsersWP;
+use CalCom\Integrations\UltimateMember;
+use CalCom\Integrations\UserMeta;
 use CalCom\Integrations\Admin\IntegrationsPage;
 
 defined('ABSPATH') || exit;
@@ -24,7 +29,26 @@ class Cal
 
         $integrations = new Integrations();
 
+        // Register WordPress core user profile hooks once (shared by all profile integrations).
+        (new UserMeta())->hooks();
+
+        $learnpress = new LearnPress($integrations);
+        $learnpress->hooks();
+
+        $tutorlms = new TutorLMS($integrations);
+        $tutorlms->hooks();
+
+        $userswp = new UsersWP($integrations);
+        $userswp->hooks();
+
+        $ultimate_member = new UltimateMember($integrations);
+        $ultimate_member->hooks();
+
         $integration_instances = [
+            'learnpress'       => $learnpress,
+            'tutor-lms'        => $tutorlms,
+            'users-wp'         => $userswp,
+            'ultimate-member'  => $ultimate_member,
         ];
 
         (new IntegrationsPage($integrations, $integration_instances))->hooks();

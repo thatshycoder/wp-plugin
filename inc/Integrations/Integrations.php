@@ -11,6 +11,26 @@ class Integrations
     public function get_integrations()
     {
         return [
+            'learnpress' => [
+                'name'        => __('LearnPress', 'cal-com'),
+                'description' => __('Show an optional Cal.com booking option on LearnPress course pages.', 'cal-com'),
+                'icon'        => 'dashicons dashicons-book',
+            ],
+            'tutor-lms' => [
+                'name'        => __('Tutor LMS', 'cal-com'),
+                'description' => __('Show an optional Cal.com booking option on Tutor LMS course pages.', 'cal-com'),
+                'icon'        => 'dashicons dashicons-book',
+            ],
+            'users-wp' => [
+                'name'        => __('UsersWP', 'cal-com'),
+                'description' => __('Show a Cal.com booking option on UsersWP user profile pages using per-user booking URLs stored in the WordPress user profile.', 'cal-com'),
+                'icon'        => 'dashicons dashicons-groups',
+            ],
+            'ultimate-member' => [
+                'name'        => __('Ultimate Member', 'cal-com'),
+                'description' => __('Show a Cal.com booking option on Ultimate Member member profiles using per-member booking URLs stored in the WordPress user profile.', 'cal-com'),
+                'icon'        => 'dashicons dashicons-groups',
+            ],
         ];
     }
 
