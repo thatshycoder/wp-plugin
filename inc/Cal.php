@@ -2,27 +2,22 @@
 
 namespace CalCom;
 
+use CalCom\Admin\Customizer;
+
 defined('ABSPATH') || exit;
 
 class Cal
 {
     private static $instance;
 
-    private function includes()
-    {
-        include_once CALCOM_DIR_PATH . 'inc/class.embed.php';
-        include_once CALCOM_DIR_PATH . 'inc/admin/class.customizer.php';
-        include_once CALCOM_DIR_PATH . 'inc/class.custom-embed.php';
-    }
-
     private function __construct()
     {
-        $this->includes();
         $this->hooks();
 
         (new Embed())->hooks();
         (new Customizer())->hooks();
         (new CustomEmbed())->hooks();
+
     }
 
     private function hooks()
@@ -84,7 +79,7 @@ class Cal
         );
     }
 
-    public static function get_instance(): self
+    public static function get_instance()
     {
         if (null === self::$instance) {
             self::$instance = new self();
