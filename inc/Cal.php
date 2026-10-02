@@ -3,6 +3,7 @@
 namespace CalCom;
 
 use CalCom\Admin\Customizer;
+use CalCom\Admin\ApiSettings;
 
 defined('ABSPATH') || exit;
 
@@ -16,6 +17,7 @@ class Cal
 
         (new Embed())->hooks();
         (new Customizer())->hooks();
+        (new ApiSettings())->hooks();
         (new CustomEmbed())->hooks();
 
     }
@@ -60,6 +62,14 @@ class Cal
             'calcom-customizer-js',
             CALCOM_ASSETS_URL . 'js/admin-customizer.min.js',
             ['calcom-custom-embed-js'],
+            $ver,
+            true
+        );
+
+        wp_register_script(
+            'calcom-customizer-extra-js',
+            CALCOM_ASSETS_URL . 'js/admin-customizer-extra.js',
+            ['calcom-customizer-js'],
             $ver,
             true
         );
