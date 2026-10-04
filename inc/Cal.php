@@ -105,7 +105,7 @@ class Cal
 
         wp_register_script(
             'calcom-customizer-extra-js',
-            CALCOM_ASSETS_URL . 'js/admin-customizer-extra.js',
+            CALCOM_ASSETS_URL . 'js/admin-customizer-extra.min.js',
             ['calcom-customizer-js'],
             $ver,
             true
