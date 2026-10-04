@@ -5,6 +5,7 @@ namespace CalCom;
 use CalCom\Admin\Customizer;
 use CalCom\Admin\ApiSettings;
 use CalCom\Integrations\Integrations;
+use CalCom\Integrations\WooCommerce;
 use CalCom\Integrations\LearnPress;
 use CalCom\Integrations\TutorLMS;
 use CalCom\Integrations\UsersWP;
@@ -32,6 +33,9 @@ class Cal
         // Register WordPress core user profile hooks once (shared by all profile integrations).
         (new UserMeta())->hooks();
 
+        $woocommerce = new WooCommerce($integrations);
+        $woocommerce->hooks();
+
         $learnpress = new LearnPress($integrations);
         $learnpress->hooks();
 
@@ -45,6 +49,7 @@ class Cal
         $ultimate_member->hooks();
 
         $integration_instances = [
+            'woocommerce'      => $woocommerce,
             'learnpress'       => $learnpress,
             'tutor-lms'        => $tutorlms,
             'users-wp'         => $userswp,

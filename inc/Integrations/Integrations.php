@@ -11,6 +11,11 @@ class Integrations
     public function get_integrations()
     {
         return [
+            'woocommerce' => [
+                'name'        => __('WooCommerce', 'cal-com'),
+                'description' => __('Show a Cal.com scheduling prompt on WooCommerce order confirmation pages.', 'cal-com'),
+                'icon'        => 'dashicons dashicons-cart',
+            ],
             'learnpress' => [
                 'name'        => __('LearnPress', 'cal-com'),
                 'description' => __('Show an optional Cal.com booking option on LearnPress course pages.', 'cal-com'),
