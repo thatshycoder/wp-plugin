@@ -123,6 +123,10 @@ class TutorLMS
             return;
         }
 
+        if (!get_query_var('tutor_profile_username')) {
+            return;
+        }
+
         $user_id = $this->get_instructor_id();
         if (!$user_id || !tutor_utils()->is_instructor($user_id)) {
             return;

@@ -148,26 +148,33 @@
      */
     document.addEventListener('wpcf7mailsent', function (event) {
         var form = event.target;
-
+    
         if (!form) {
             return;
         }
-
-        // Wait briefly so Contact Form 7 can finish updating
-        // its response/message DOM.
+    
         setTimeout(function () {
             var prompt = form.querySelector('.calcom-cf7-prompt');
             var response = form.querySelector('.wpcf7-response-output');
-
+    
             if (!prompt || !response) {
                 return;
             }
-
+    
             // Move the Cal.com prompt into the CF7 success message area.
             response.appendChild(prompt);
-
-            // Make the prompt visible and activate its button.
-            showPrompt(prompt);
+    
+            // Show the prompt.
+            prompt.style.display = 'block';
+    
+            // If the main Cal.com embed has already initialized this
+            // button, do not initialize it again from CF7.
+            if (window.calcomData) {
+                return;
+            }
+    
+            // Otherwise initialize the CF7 button normally.
+            initButton(prompt);
         }, 100);
     });
 

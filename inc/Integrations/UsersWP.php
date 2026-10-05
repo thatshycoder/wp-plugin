@@ -101,6 +101,10 @@ class UsersWP
             return;
         }
 
+        if (!get_query_var('uwp_profile')) {
+            return;
+        }
+        
         $user_id = $this->get_profile_user_id();
         if (!$user_id) {
             return;

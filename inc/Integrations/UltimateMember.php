@@ -123,7 +123,7 @@ class UltimateMember
             return;
         }
 
-        if (!um_profile_id()) {
+        if (!get_query_var('um_user')) {
             return;
         }
 
