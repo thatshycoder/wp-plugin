@@ -11,6 +11,21 @@ class Integrations
     public function get_integrations()
     {
         return [
+            'contact-form-7' => [
+                'name'        => __('Contact Form 7', 'cal-com'),
+                'description' => __('Show a Cal.com scheduling prompt after successful Contact Form 7 submissions.', 'cal-com'),
+                'icon'        => 'dashicons dashicons-admin-links',
+            ],
+            'wpforms' => [
+                'name'        => __('WPForms', 'cal-com'),
+                'description' => __('Show a Cal.com scheduling prompt after successful WPForms submissions.', 'cal-com'),
+                'icon'        => 'dashicons dashicons-admin-generic',
+            ],
+            'fluentforms' => [
+                'name'        => __('Fluent Forms', 'cal-com'),
+                'description' => __('Show a Cal.com scheduling prompt after successful Fluent Forms submissions.', 'cal-com'),
+                'icon'        => 'dashicons dashicons-media-text',
+            ],
             'woocommerce' => [
                 'name'        => __('WooCommerce', 'cal-com'),
                 'description' => __('Show a Cal.com scheduling prompt on WooCommerce order confirmation pages.', 'cal-com'),
