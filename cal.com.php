@@ -5,7 +5,7 @@
  * Description: Simplest and easiest way to embed Cal.com in WordPress.
  * Author: Cal.com, Simpma
  * Author URI: https://cal.com/
- * Version: 2.1.0
+ * Version: 3.0.0
  * License: GPLv3 or later
  * License URI: https://www.gnu.org/licenses/gpl-3.0.en.html
  * Text Domain: cal-com
