@@ -61,8 +61,10 @@ class UsersWP
                 </ol>
             </div>
         </div>
+
         <?php
-        return ob_get_clean();
+        $template = ob_get_clean();
+        return $template;
     }
 
     /**

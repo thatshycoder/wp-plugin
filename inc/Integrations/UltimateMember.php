@@ -39,17 +39,17 @@ class UltimateMember
     public function render_admin_settings()
     {
         ob_start();
-        ?>
+?>
         <div class="calcom-ultimate-member-settings-section">
             <h2><?php esc_html_e('Ultimate Member', 'cal-com'); ?></h2>
-         
+
             <p class="description"><?php esc_html_e('This integration uses per-user Cal.com booking URLs stored in the WordPress user profile. Configure a Cal.com URL for each member on their profile edit screen.', 'cal-com'); ?></p>
             <?php if (!class_exists('UM')): ?>
                 <div class="notice notice-warning inline">
                     <p><?php esc_html_e('Ultimate Member is not active. Booking URL configuration will appear on user profile screens once Ultimate Member is installed and activated.', 'cal-com'); ?></p>
                 </div>
             <?php endif; ?>
-          
+
             <div class="calcom-ultimate-member-info">
                 <p><?php esc_html_e('To configure:', 'cal-com'); ?></p>
                 <ol>
@@ -61,8 +61,9 @@ class UltimateMember
                 </ol>
             </div>
         </div>
-        <?php
-        return ob_get_clean();
+<?php
+        $template = ob_get_clean();
+        return $template;
     }
 
     /**

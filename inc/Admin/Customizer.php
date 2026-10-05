@@ -70,6 +70,7 @@ class Customizer
     public function render()
     {
         wp_enqueue_script('calcom-customizer-js');
+        wp_enqueue_script('calcom-customizer-extra-js');
         wp_enqueue_style('calcom-customizer-css');
         ?>
         <div class="cal-admin wrap">

@@ -42,14 +42,14 @@ class TutorLMS
 ?>
         <div class="calcom-tutorlms-settings-section">
             <h2><?php esc_html_e('Tutor LMS', 'cal-com'); ?></h2>
-            
+
             <p class="description"><?php esc_html_e('This integration uses per-user Cal.com booking URLs stored in the WordPress user profile. Configure a Cal.com URL for each instructor on their profile edit screen.', 'cal-com'); ?></p>
             <?php if (!function_exists('tutor_utils')): ?>
                 <div class="notice notice-warning inline">
                     <p><?php esc_html_e('Tutor LMS is not active. Booking URL configuration will appear on user profile screens once Tutor LMS is installed and activated.', 'cal-com'); ?></p>
                 </div>
             <?php endif; ?>
-            
+
             <div class="calcom-tutorlms-info">
                 <p><?php esc_html_e('To configure:', 'cal-com'); ?></p>
                 <ol>
@@ -62,7 +62,8 @@ class TutorLMS
             </div>
         </div>
 <?php
-        return ob_get_clean();
+        $template = ob_get_clean();
+        return $template;
     }
 
     /**
