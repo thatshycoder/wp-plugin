@@ -41,7 +41,7 @@ class Customizer
             __('Cal.com Customizer', 'cal-com'),
             __('Customizer', 'cal-com'),
             'manage_options',
-            'calcom-customizer',
+            'calcom',
             [$this, 'render'],
             30
         );
