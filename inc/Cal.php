@@ -5,6 +5,9 @@ namespace CalCom;
 use CalCom\Admin\Customizer;
 use CalCom\Admin\ApiSettings;
 use CalCom\Integrations\Integrations;
+use CalCom\Integrations\Contact_Form_7;
+use CalCom\Integrations\WPForms;
+use CalCom\Integrations\FluentForms;
 use CalCom\Integrations\WooCommerce;
 use CalCom\Integrations\LearnPress;
 use CalCom\Integrations\TutorLMS;
@@ -33,6 +36,15 @@ class Cal
         // Register WordPress core user profile hooks once (shared by all profile integrations).
         (new UserMeta())->hooks();
 
+        $cf7 = new Contact_Form_7($integrations);
+        $cf7->hooks();
+
+        $wpforms = new WPForms($integrations);
+        $wpforms->hooks();
+
+        $fluentforms = new FluentForms($integrations);
+        $fluentforms->hooks();
+
         $woocommerce = new WooCommerce($integrations);
         $woocommerce->hooks();
 
@@ -49,6 +61,9 @@ class Cal
         $ultimate_member->hooks();
 
         $integration_instances = [
+            'contact-form-7' => $cf7,
+            'wpforms'          => $wpforms,
+            'fluentforms'      => $fluentforms,
             'woocommerce'      => $woocommerce,
             'learnpress'       => $learnpress,
             'tutor-lms'        => $tutorlms,
@@ -107,6 +122,14 @@ class Cal
             'calcom-customizer-extra-js',
             CALCOM_ASSETS_URL . 'js/admin-customizer-extra.min.js',
             ['calcom-customizer-js'],
+            $ver,
+            true
+        );
+
+        wp_register_script(
+            'calcom-forms-js',
+            CALCOM_ASSETS_URL . 'js/forms-loader.min.js',
+            ['calcom-embed-js', 'jquery'],
             $ver,
             true
         );
