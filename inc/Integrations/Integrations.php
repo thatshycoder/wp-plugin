@@ -28,27 +28,27 @@ class Integrations
             ],
             'woocommerce' => [
                 'name'        => __('WooCommerce', 'cal-com'),
-                'description' => __('Show a Cal.com scheduling prompt on WooCommerce order confirmation pages.', 'cal-com'),
+                'description' => __('Show a Cal.com scheduling prompt on WooCommerce order thank-you page.', 'cal-com'),
                 'icon'        => 'dashicons dashicons-cart',
             ],
             'learnpress' => [
                 'name'        => __('LearnPress', 'cal-com'),
-                'description' => __('Show an optional Cal.com booking option on LearnPress course pages.', 'cal-com'),
+                'description' => __('Show an optional Cal.com booking option on LearnPress instructor profile page.', 'cal-com'),
                 'icon'        => 'dashicons dashicons-book',
             ],
             'tutor-lms' => [
                 'name'        => __('Tutor LMS', 'cal-com'),
-                'description' => __('Show an optional Cal.com booking option on Tutor LMS course pages.', 'cal-com'),
+                'description' => __('Show an optional Cal.com booking option on Tutor LMS instructor profile page.', 'cal-com'),
                 'icon'        => 'dashicons dashicons-book',
             ],
             'users-wp' => [
                 'name'        => __('UsersWP', 'cal-com'),
-                'description' => __('Show a Cal.com booking option on UsersWP user profile pages using per-user booking URLs stored in the WordPress user profile.', 'cal-com'),
+                'description' => __('Show a Cal.com booking option on UsersWP users profile page.', 'cal-com'),
                 'icon'        => 'dashicons dashicons-groups',
             ],
             'ultimate-member' => [
                 'name'        => __('Ultimate Member', 'cal-com'),
-                'description' => __('Show a Cal.com booking option on Ultimate Member member profiles using per-member booking URLs stored in the WordPress user profile.', 'cal-com'),
+                'description' => __('Show a Cal.com booking option on Ultimate Member members profile page.', 'cal-com'),
                 'icon'        => 'dashicons dashicons-groups',
             ],
         ];
